@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+section {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.student-info p {
+    margin: 5px 0;
+}
+
+.cgpa-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.cgpa-section th,
+.cgpa-section td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.cgpa-section th {
+    background: #e0e0e0;
+}
+
+.overall {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.form-section label {
+    display: block;
+    margin-top: 10px;
+}
+
+.form-section input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+.form-section button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-section button:hover {
+    background: #0056b3;
+}
+
+.error {
+    margin-top: 10px;
+    color: red;
+    font-size: 0.9rem;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: #666;
+}
