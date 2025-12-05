@@ -3,24 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Student CGPA Manager</title>
+  <title>Student CGPA Manager — Modern</title>
 
-  <!-- Google Font -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- tsParticles for particle effects -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.1/tsparticles.bundle.min.js"></script>
 
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="tsparticles" class="particles-layer"></div>
+
   <header class="site-header">
     <div class="container header-row">
       <div>
         <h1 class="brand">Student CGPA Manager</h1>
-        <p class="sub">Full Stack Dev — Mini Project</p>
+        <p class="sub">Modern UI • Live chart • Particles • Animations</p>
       </div>
-
       <div class="controls">
         <select id="studentSelect" class="select" title="Choose student"></select>
         <button id="themeToggle" class="btn icon-btn" aria-label="Toggle dark mode">🌙</button>
@@ -30,8 +33,7 @@
 
   <main class="container">
     <div class="grid">
-      <!-- Left column: create / student info -->
-      <section class="card card-glass">
+      <section class="card card-glass left">
         <div class="card-head">
           <h2>Create / Manage Student</h2>
           <div class="card-actions">
@@ -42,30 +44,24 @@
 
         <form id="studentForm" class="form" autocomplete="off">
           <label for="name">Name</label>
-          <input id="name" required placeholder="e.g. Siva Sai" />
-
+          <input id="name" required placeholder="Siva Sai" />
           <label for="college">College</label>
-          <input id="college" required placeholder="e.g. Narasaraopet Engineering College" />
-
+          <input id="college" required placeholder="Narasaraopet Engineering College" />
           <label for="branch">Branch</label>
-          <input id="branch" required placeholder="e.g. CSE - AI" />
-
+          <input id="branch" required placeholder="CSE - AI" />
           <label for="batch">Batch</label>
-          <input id="batch" required placeholder="e.g. 2024 - 2028" />
+          <input id="batch" required placeholder="2024 - 2028" />
 
           <div class="row actions-row">
             <p id="studentError" class="error"></p>
-            <button type="submit" class="btn primary">Add / Update Student</button>
+            <button type="submit" class="btn primary ripple">Add / Update</button>
           </div>
         </form>
 
-        <div class="student-preview" id="studentPreview" aria-live="polite">
-          <!-- runtime filled -->
-        </div>
+        <div class="student-preview" id="studentPreview" aria-live="polite"></div>
       </section>
 
-      <!-- Right column: table + form + chart -->
-      <section class="card card-glass">
+      <section class="card card-glass right">
         <div class="card-head">
           <h2>Semester CGPA</h2>
           <div class="overall">Overall: <strong id="overallCgpa">0.00</strong></div>
@@ -73,33 +69,34 @@
 
         <div class="table-wrap">
           <table id="cgpaTable" class="table">
-            <thead>
-              <tr><th>Semester</th><th>CGPA</th></tr>
-            </thead>
+            <thead><tr><th>Semester</th><th>CGPA</th></tr></thead>
             <tbody id="cgpaBody"></tbody>
           </table>
         </div>
 
         <form id="cgpaForm" class="form-inline" autocomplete="off">
-          <div class="field">
-            <label for="semester">Semester</label>
-            <input type="number" id="semester" min="1" required />
+          <div class="inline-row">
+            <div class="field">
+              <label for="semester">Semester</label>
+              <input type="number" id="semester" min="1" required />
+            </div>
+            <div class="field">
+              <label for="cgpa">CGPA</label>
+              <input type="number" id="cgpa" min="0" max="10" step="0.1" required />
+            </div>
           </div>
-          <div class="field">
-            <label for="cgpa">CGPA</label>
-            <input type="number" id="cgpa" min="0" max="10" step="0.1" required />
-          </div>
-          <div class="form-row actions-row">
+
+          <div class="row actions-row">
             <p id="error" class="error"></p>
-            <div style="display:flex; gap:8px;">
-              <button type="submit" class="btn primary">Add / Update</button>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <button type="submit" class="btn primary ripple">Add / Update</button>
               <button id="clearStudent" type="button" class="btn">Clear Data</button>
             </div>
           </div>
         </form>
 
         <div class="chart-wrap">
-          <canvas id="cgpaChart" height="150"></canvas>
+          <canvas id="cgpaChart" height="140"></canvas>
         </div>
       </section>
     </div>
@@ -112,4 +109,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-   
