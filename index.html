@@ -1,63 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Student CGPA Viewer</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student CGPA Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>Student CGPA Viewer</h1>
-        <p class="tagline">Full Stack Development - Mini Project</p>
-    </header>
+  <header class="site-header">
+    <div class="container header-row">
+      <div>
+        <h1 class="brand">Student CGPA Manager</h1>
+        <p class="sub">Full Stack Development — Mini Project</p>
+      </div>
 
-    <section class="student-info">
-        <h2>Student Details</h2>
-        <p><strong>Name:</strong> Siva Sai</p>
-        <p><strong>College:</strong> Narasaraopet Engineering College</p>
-        <p><strong>Branch:</strong> CSE - AI</p>
-        <p><strong>Batch:</strong> 2024 - 2028</p>
+      <div class="controls">
+        <select id="studentSelect" class="select"></select>
+        <button id="themeToggle" class="btn icon-btn" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Create new student -->
+    <section class="card student-card">
+      <h2>Create New Student</h2>
+      <form id="studentForm" class="form">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input id="name" required placeholder="e.g. Siva Sai" />
+        </div>
+        <div class="form-row">
+          <label for="college">College</label>
+          <input id="college" required placeholder="e.g. Narasaraopet Engineering College" />
+        </div>
+        <div class="form-row">
+          <label for="branch">Branch</label>
+          <input id="branch" required placeholder="e.g. CSE - AI" />
+        </div>
+        <div class="form-row">
+          <label for="batch">Batch</label>
+          <input id="batch" required placeholder="e.g. 2024 - 2028" />
+        </div>
+
+        <div class="form-row actions">
+          <p id="studentError" class="error"></p>
+          <button type="submit" class="btn primary">Add Student</button>
+        </div>
+      </form>
     </section>
 
-    <section class="cgpa-section">
-        <h2>Semester CGPA</h2>
+    <!-- Selected student's CGPA -->
+    <section class="card cgpa-card">
+      <div class="card-head">
+        <div>
+          <h2 id="studentTitle">Semester CGPA</h2>
+          <div class="muted" id="studentMeta"></div>
+        </div>
+        <div class="overall">Overall: <span id="overallCgpa">0.00</span></div>
+      </div>
 
-        <table id="cgpaTable">
-            <thead>
-                <tr>
-                    <th>Semester</th>
-                    <th>CGPA</th>
-                </tr>
-            </thead>
-            <tbody id="cgpaBody">
-                <tr>
-                    <td>1</td>
-                    <td>6.8</td>
-                </tr>
-            </tbody>
+      <div class="table-wrap">
+        <table id="cgpaTable" class="table">
+          <thead>
+            <tr><th>Semester</th><th>CGPA</th></tr>
+          </thead>
+          <tbody id="cgpaBody"></tbody>
         </table>
+      </div>
 
-        <p class="overall">Overall CGPA: <span id="overallCgpa">6.8</span></p>
+      <form id="cgpaForm" class="form">
+        <div class="form-row">
+          <label for="semester">Semester</label>
+          <input type="number" id="semester" min="1" required />
+        </div>
+
+        <div class="form-row">
+          <label for="cgpa">CGPA</label>
+          <input type="number" id="cgpa" min="0" max="10" step="0.1" required />
+        </div>
+
+        <div class="form-row actions">
+          <p id="error" class="error"></p>
+          <div style="display:flex; gap:8px;">
+            <button type="submit" class="btn primary">Add CGPA</button>
+            <button id="clearStudent" type="button" class="btn">Clear Student Data</button>
+          </div>
+        </div>
+      </form>
     </section>
+  </main>
 
-    <section class="form-section">
-        <h2>Add New Semester CGPA</h2>
-        <form id="cgpaForm">
-            <label for="semester">Semester Number:</label>
-            <input type="number" id="semester" min="1" required>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Project: Full Stack Development - 1 | Created by Siva Sai</p>
+    </div>
+  </footer>
 
-            <label for="cgpa">CGPA:</label>
-            <input type="number" id="cgpa" min="0" max="10" step="0.1" required>
-
-            <button type="submit">Add</button>
-        </form>
-        <p id="error" class="error"></p>
-    </section>
-
-    <footer>
-        <p>Project: Full Stack Development - 1 | Created by Siva Sai</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
